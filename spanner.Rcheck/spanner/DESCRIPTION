@@ -1,0 +1,14 @@
+Package: spanner
+Maintainer: Andrie de Vries <apdevries@gmail.com>
+License: GPL (>=2)
+Title: A tookit full of small tools: screwdrivers and spanners
+LazyData: true
+LazyLoad: true
+Author: Andrie de Vries <apdevries@gmail.com>
+Description: A tookit full of small tools: screwdrivers and spanners
+Author@R: person("Andrie", "de Vries", email="apdevries@gmail.com")
+Version: 0.0-02
+URL:
+Date: 2011-08-03
+Collate: 'spanner.R'
+Built: R 2.13.0; ; 2011-08-03 09:06:28 UTC; windows

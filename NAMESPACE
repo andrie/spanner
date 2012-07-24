@@ -1,0 +1,4 @@
+export(read.excel)
+export(read.tc)
+export(write.excel)
+export(write.ppt)
