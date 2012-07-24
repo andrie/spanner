@@ -76,7 +76,9 @@ read.tc <- function(x, header=TRUE, ...){
 #' 
 #' The plotsin \code{plotList} are printed sequentially to the viewports defined by \code{layout}, in order of rows followed by columns.  If an element of \code{plotList} is \code{NULL}, then that plot is empty.
 #' @param plotList A \code{list} of \code{ggplot} objects
-#' @param layout A layout provided by \code{\link[grid]{grid.layout}}
+#' @param layout A layout provided by \code{\link[grid]{grid.layout}}. Defaults to a vertical column.
+#' @param colwise If TRUE, the plots are arranged column-wise
+#' @param rowwise If TRUE, the plots are arranged row-wise
 #' @export
 #' @examples 
 #' require(ggplot2)
@@ -93,24 +95,21 @@ read.tc <- function(x, header=TRUE, ...){
 #' gglayout(pList, layout=grid.layout(4, 1))
 #' gglayout(pList, layout=grid.layout(1, 4))
 #' gglayout(pList, layout=grid.layout(2, 2), rowwise=TRUE)
-gglayout <- function(plotList, layout=grid.layout(1, length(plotList)), colwise=TRUE, rowwise=!colwise){
+gglayout <- function(plotList, layout=grid.layout(length(plotList), 1), colwise=TRUE, rowwise=!colwise){
   vplayout <- function(x, y) viewport(layout.pos.row=x, layout.pos.col=y)
   grid.newpage()
   pushViewport(viewport(layout=layout))
+
+  xx <- layout$ncol
+  yy <- layout$nrow
   p <- 1
-  if(!rowwise) {
-    xx <- layout$nrow
-    yy <- layout$ncol
-  } else {
-    xx <- layout$ncol
-    yy <- layout$nrow
-  }
-  #browser()
+  
   for(i in seq_len(xx)){
     for(j in seq_len(yy)){
-      if(p <= length(plotList)) print(plotList[[p]], vp=vplayout(i, j))
+      if(rowwise) vp <- vplayout(i,j) else vp <- vplayout(j,i)
+      if(p <= length(plotList)) print(plotList[[p]], vp=vp)
       p <- p + 1
     }
   }
-  invisible(NULL)
+  return(invisible(NULL))
 }
