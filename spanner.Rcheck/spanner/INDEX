@@ -1,4 +1,0 @@
-read.excel              Copies data from clipboard, e.g. when pasting
-                        from Excel.
-write.excel             Copies data to clipboard, ready for pasting
-                        into Excel.

@@ -3,7 +3,7 @@
 \title{Copies data to clipboard, ready for pasting into Excel.}
 \usage{
   write.excel(tab, row.names = !is.data.frame(tab),
-  col.names = is.data.frame(tab), ...)
+    col.names = is.data.frame(tab), ...)
 }
 \arguments{
   \item{tab}{A data.frame, array or other object that can

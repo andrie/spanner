@@ -2,8 +2,9 @@
 \alias{write.ppt}
 \title{Copies data to clipboard, ready for pasting into PowerPoint or Word.}
 \usage{
-  write.ppt(x, row.names = FALSE, col.names = names(x),
-  ...)
+  write.ppt(x, row.names = FALSE,
+    col.names = if (is.data.frame(x)) names(x) else FALSE,
+    ...)
 }
 \arguments{
   \item{x}{A data.frame, array or other object that can be

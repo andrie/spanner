@@ -11,10 +11,10 @@ Description: A tookit full of small tools: screwdrivers and
 Author@R: person("Andrie", "de Vries",
     email="apdevries@gmail.com")
 Version: 0.0-05
-URL:
+URL: 
 Date: 2011-11-15
 Collate:
     'spanner.R'
 Suggests:
-	ggplot2
-
+    ggplot2,
+    grid

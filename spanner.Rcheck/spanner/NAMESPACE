@@ -1,2 +1,0 @@
-export(read.excel)
-export(write.excel)

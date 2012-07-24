@@ -80,6 +80,7 @@ read.tc <- function(x, header=TRUE, ...){
 #' @export
 #' @examples 
 #' require(ggplot2)
+#' require(grid)
 #' p <- ggplot(mtcars, aes(factor(cyl)))
 #' pList <- list(
 #'     p + geom_bar(),
@@ -88,16 +89,25 @@ read.tc <- function(x, header=TRUE, ...){
 #'     p + geom_bar(fill="white", colour="darkgreen")
 #' )
 #' 
-#' gglayout(pList, layout=grid.layout(2, 2))
+#' gglayout(pList)
 #' gglayout(pList, layout=grid.layout(4, 1))
 #' gglayout(pList, layout=grid.layout(1, 4))
-gglayout <- function(plotList, layout=grid.layout(2,2)){
+#' gglayout(pList, layout=grid.layout(2, 2), rowwise=TRUE)
+gglayout <- function(plotList, layout=grid.layout(1, length(plotList)), colwise=TRUE, rowwise=!colwise){
   vplayout <- function(x, y) viewport(layout.pos.row=x, layout.pos.col=y)
   grid.newpage()
   pushViewport(viewport(layout=layout))
   p <- 1
-  for(i in seq_len(layout$nrow)){
-    for(j in seq_len(layout$ncol)){
+  if(!rowwise) {
+    xx <- layout$nrow
+    yy <- layout$ncol
+  } else {
+    xx <- layout$ncol
+    yy <- layout$nrow
+  }
+  #browser()
+  for(i in seq_len(xx)){
+    for(j in seq_len(yy)){
       if(p <= length(plotList)) print(plotList[[p]], vp=vplayout(i, j))
       p <- p + 1
     }

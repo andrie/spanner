@@ -1,3 +1,4 @@
+export(gglayout)
 export(read.excel)
 export(read.tc)
 export(write.excel)
